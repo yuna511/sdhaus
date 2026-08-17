@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>(주)에스디하우스 (SD HAUS) | 인테리어 필름 전문 기업</title>
-    <!-- Tailwind CSS 라이브러리 로드 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
@@ -13,7 +12,7 @@
         .sd-blue { color: #7DB7D4; }
         .sd-bg-blue { background-color: #7DB7D4; }
         
-        /* 🎬 메인 배경 이미지 페이드 전환 */
+        /* 메인 배경 슬라이드 애니메이션 */
         .hero-slide {
             position: absolute;
             inset: 0;
@@ -27,6 +26,11 @@
             opacity: 1;
             transform: scale(1);
         }
+
+        /* 롯데리아 배지 페이드 전환 */
+        #lotteria-badge {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="sd-bg text-stone-800 font-sans tracking-tight antialiased">
@@ -35,7 +39,6 @@
     <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-stone-200/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex justify-between items-center">
             
-            <!-- 🎨 [SD HAUS 로고] -->
             <a href="#hero" class="flex items-center space-x-2 sm:space-x-3.5 group">
                 <svg class="h-6 sm:h-8 w-auto" viewBox="0 0 170 54" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0" y="2" width="22" height="22" rx="10" fill="#7DB7D4" />
@@ -47,7 +50,6 @@
                 <span class="text-[11px] sm:text-xs font-semibold text-stone-400 border-l border-stone-300 pl-2 sm:pl-3 tracking-wide">(주)에스디하우스</span>
             </a>
 
-            <!-- PC 메뉴 -->
             <nav class="hidden md:flex space-x-8 lg:space-x-10 text-sm font-medium tracking-wide text-stone-600">
                 <a href="#hero" class="hover:text-stone-900 transition">홈</a>
                 <a href="#philosophy" class="hover:text-stone-900 transition">브랜드 스토리</a>
@@ -57,7 +59,6 @@
             
             <div class="hidden md:block text-xs border border-stone-300 px-3.5 py-1.5 rounded-full font-medium tracking-wider text-stone-600">KR / EN</div>
 
-            <!-- 모바일 햄버거 버튼 -->
             <button onclick="toggleMobileMenu()" class="md:hidden text-stone-700 hover:text-stone-900 focus:outline-none p-1.5" aria-label="메뉴 열기">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -65,7 +66,6 @@
             </button>
         </div>
 
-        <!-- 모바일 드롭다운 -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-stone-200 px-6 py-4 space-y-3">
             <a href="#hero" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">홈</a>
             <a href="#philosophy" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">브랜드 스토리</a>
@@ -78,17 +78,16 @@
         </div>
     </header>
 
-    <!-- [1. 메인 히어로 섹션 (좌측 정렬 모던 레이아웃)] -->
+    <!-- [1. 메인 히어로 섹션] -->
     <section id="hero" class="relative min-h-screen flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24 overflow-hidden pt-20">
         
-        <!-- 슬라이드 배경 1 (국립과천과학관 롯데리아 정면컷 + 좌측 어두운 그라데이션) -->
+        <!-- 슬라이드 1: 롯데리아 시공 현장 -->
         <div class="hero-slide active" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.6) 45%, rgba(15,23,35,0.3) 100%), url('./hero_lotteria.jpg');"></div>
-        <!-- 슬라이드 배경 2 -->
+        <!-- 슬라이드 2 -->
         <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- 슬라이드 배경 3 -->
+        <!-- 슬라이드 3 -->
         <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');"></div>
 
-        <!-- 좌측 정렬 메인 슬로건 콘텐츠 -->
         <div class="relative z-10 max-w-2xl text-left py-12">
             <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-sky-300 mb-3 sm:mb-4 font-semibold block">Premium Interior Film Solutions</span>
             <h1 class="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-white mb-4 sm:mb-6 leading-tight">
@@ -100,20 +99,19 @@
             </p>
             <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
                 <a href="#films" class="bg-white text-stone-900 text-xs tracking-widest uppercase px-7 py-3.5 sm:py-4 hover:bg-stone-900 hover:text-white transition duration-300 font-medium shadow-lg text-center">필름 컬렉션 보기</a>
-                <!-- ⭐ 시공 갤러리로 직접 이동하는 버튼 -->
                 <a href="#space" class="border border-white/70 text-white text-xs tracking-widest uppercase px-7 py-3.5 sm:py-4 hover:bg-white/10 transition duration-300 font-medium text-center">시공 갤러리 바로가기</a>
             </div>
         </div>
 
-        <!-- 슬라이더 인디케이터 (좌측 하단) -->
+        <!-- 슬라이더 인디케이터 -->
         <div class="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 lg:left-24 z-10 flex space-x-2">
             <div class="slide-dot w-6 sm:w-8 h-1 rounded-full bg-white transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
         </div>
 
-        <!-- ⭐ 우측 하단 시공 현장 바로가기 배지 -->
-        <a href="#space" class="hidden lg:flex absolute bottom-10 right-24 z-10 items-center space-x-2 bg-stone-900/80 backdrop-blur-md border border-sky-400/40 text-sky-200 text-xs px-4 py-2.5 rounded-lg shadow-xl hover:bg-stone-900 hover:border-sky-300 transition duration-300">
+        <!-- 롯데리아 슬라이드 시에만 나타나는 현장 배지 -->
+        <a id="lotteria-badge" href="#space" class="hidden lg:flex absolute bottom-10 right-24 z-10 items-center space-x-2 bg-stone-900/80 backdrop-blur-md border border-sky-400/40 text-sky-200 text-xs px-4 py-2.5 rounded-lg shadow-xl hover:bg-stone-900 hover:border-sky-300 transition duration-300 opacity-100 scale-100">
             <span>📍</span>
             <span class="font-medium">시공 현장 : 국립과천과학관 롯데리아 전면 시공</span>
             <span class="text-stone-400 ml-1">→</span>
@@ -184,14 +182,13 @@
         </div>
     </section>
 
-    <!-- [4. 시공 갤러리 섹션 (#space)] -->
+    <!-- [4. 시공 갤러리 섹션] -->
     <section id="space" class="sd-dark text-stone-300 py-20 sm:py-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <span class="text-xs uppercase tracking-widest sd-blue font-semibold block mb-3 sm:mb-4">Space Archive</span>
             <h2 class="text-2xl sm:text-3xl font-light text-white mb-10 sm:mb-16">에스디하우스 필름 시공 공간</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 
-                <!-- ⭐ 1. 국립과천과학관 롯데리아 대표 시공 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('./hero_lotteria.jpg') center/cover;"></div>
                     <div class="flex items-center space-x-2">
@@ -201,7 +198,6 @@
                     <p class="text-xs text-stone-400">키즈존 특화 컬러 필름, 대형 곡면 벽체 및 기둥 프레임 전면 마감 시공</p>
                 </div>
 
-                <!-- 2. 주거 복합 리폼 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
                     <div class="flex items-center space-x-2">
@@ -211,7 +207,6 @@
                     <p class="text-xs text-stone-400">문틀, 샷시, 싱크대 무광 솔리드 매트 화이트 시공</p>
                 </div>
 
-                <!-- 3. 상업 오피스 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
                     <div class="flex items-center space-x-2">
@@ -304,6 +299,7 @@
 
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slide-dot');
+        const lotteriaBadge = document.getElementById('lotteria-badge');
         let currentSlide = 0;
 
         function nextSlide() {
@@ -316,6 +312,17 @@
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.remove('w-2', 'bg-white/40');
             dots[currentSlide].classList.add('w-6', 'sm:w-8', 'bg-white');
+
+            // 롯데리아 슬라이드(0번)일 때만 배지 표시
+            if (lotteriaBadge) {
+                if (currentSlide === 0) {
+                    lotteriaBadge.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                    lotteriaBadge.classList.add('opacity-100', 'scale-100');
+                } else {
+                    lotteriaBadge.classList.remove('opacity-100', 'scale-100');
+                    lotteriaBadge.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                }
+            }
         }
         setInterval(nextSlide, 5000);
 
