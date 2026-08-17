@@ -12,7 +12,7 @@
         .sd-blue { color: #7DB7D4; }
         .sd-bg-blue { background-color: #7DB7D4; }
         
-        /* 메인 배경 슬라이드 애니메이션 */
+        /* 메인 히어로 슬라이드 */
         .hero-slide {
             position: absolute;
             inset: 0;
@@ -27,16 +27,22 @@
             transform: scale(1);
         }
 
-        /* 롯데리아 배지 페이드 전환 */
         #lotteria-badge {
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        /* 썸네일 활성화 테두리 */
+        .thumb-active {
+            border-color: #38bdf8 !important;
+            opacity: 1 !important;
+            transform: scale(1.03);
         }
     </style>
 </head>
 <body class="sd-bg text-stone-800 font-sans tracking-tight antialiased">
 
     <!-- [상단 네비게이션 바] -->
-    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-stone-200/70">
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 border-b border-stone-200/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex justify-between items-center">
             
             <a href="#hero" class="flex items-center space-x-2 sm:space-x-3.5 group">
@@ -71,21 +77,14 @@
             <a href="#philosophy" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">브랜드 스토리</a>
             <a href="#films" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">필름 컬렉션</a>
             <a href="#space" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">시공 갤러리</a>
-            <div class="pt-2 border-t border-stone-100 flex justify-between items-center text-xs text-stone-500">
-                <span>언어 선택</span>
-                <span class="font-bold text-stone-800">KR / EN</span>
-            </div>
         </div>
     </header>
 
     <!-- [1. 메인 히어로 섹션] -->
     <section id="hero" class="relative min-h-screen flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24 overflow-hidden pt-20">
         
-        <!-- 슬라이드 1: 롯데리아 시공 현장 -->
         <div class="hero-slide active" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.6) 45%, rgba(15,23,35,0.3) 100%), url('./hero_lotteria.jpg');"></div>
-        <!-- 슬라이드 2 -->
         <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- 슬라이드 3 -->
         <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');"></div>
 
         <div class="relative z-10 max-w-2xl text-left py-12">
@@ -103,14 +102,12 @@
             </div>
         </div>
 
-        <!-- 슬라이더 인디케이터 -->
         <div class="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 lg:left-24 z-10 flex space-x-2">
             <div class="slide-dot w-6 sm:w-8 h-1 rounded-full bg-white transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
         </div>
 
-        <!-- 롯데리아 슬라이드 시에만 나타나는 현장 배지 -->
         <a id="lotteria-badge" href="#space" class="hidden lg:flex absolute bottom-10 right-24 z-10 items-center space-x-2 bg-stone-900/80 backdrop-blur-md border border-sky-400/40 text-sky-200 text-xs px-4 py-2.5 rounded-lg shadow-xl hover:bg-stone-900 hover:border-sky-300 transition duration-300 opacity-100 scale-100">
             <span>📍</span>
             <span class="font-medium">시공 현장 : 국립과천과학관 롯데리아 전면 시공</span>
@@ -189,15 +186,28 @@
             <h2 class="text-2xl sm:text-3xl font-light text-white mb-10 sm:mb-16">에스디하우스 필름 시공 공간</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 
-                <div class="space-y-3 sm:space-y-4">
-                    <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('./hero_lotteria.jpg') center/cover;"></div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-[10px] bg-sky-900/80 text-sky-300 px-2.5 py-0.5 rounded font-medium border border-sky-500/30">Public / F&B</span>
-                        <h4 class="text-white font-medium text-base sm:text-lg">국립과천과학관 롯데리아</h4>
+                <!-- ⭐ 1. 국립과천과학관 롯데리아 (클릭 시 12장 전체 팝업 갤러리 실행) -->
+                <div onclick="openGalleryModal(0)" class="space-y-3 sm:space-y-4 cursor-pointer group">
+                    <div class="relative h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden border border-stone-700 group-hover:border-sky-400 transition duration-300">
+                        <div class="w-full h-full group-hover:scale-105 transition duration-500" style="background: url('./hero_lotteria.jpg') center/cover;"></div>
+                        <!-- 오버레이 배지 -->
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="bg-sky-500 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg flex items-center space-x-1.5">
+                                <span>📸 시공 사진 12장 전체보기</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[10px] bg-sky-900/80 text-sky-300 px-2.5 py-0.5 rounded font-medium border border-sky-500/30">Public / F&B</span>
+                            <h4 class="text-white font-medium text-base sm:text-lg group-hover:text-sky-300 transition">국립과천과학관 롯데리아</h4>
+                        </div>
+                        <span class="text-xs text-sky-400 font-semibold underline">사진 12장 보기 +</span>
                     </div>
                     <p class="text-xs text-stone-400">키즈존 특화 컬러 필름, 대형 곡면 벽체 및 기둥 프레임 전면 마감 시공</p>
                 </div>
 
+                <!-- 2. 주거 복합 리폼 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
                     <div class="flex items-center space-x-2">
@@ -207,6 +217,7 @@
                     <p class="text-xs text-stone-400">문틀, 샷시, 싱크대 무광 솔리드 매트 화이트 시공</p>
                 </div>
 
+                <!-- 3. 상업 오피스 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
                     <div class="flex items-center space-x-2">
@@ -219,6 +230,87 @@
             </div>
         </div>
     </section>
+
+    <!-- ⭐ [국립과천과학관 롯데리아 시공 사진 12장 전용 팝업 갤러리] -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 transition-opacity duration-300">
+        <div class="relative w-full max-w-6xl bg-stone-900 rounded-2xl overflow-hidden border border-stone-700 shadow-2xl flex flex-col max-h-[95vh]">
+            
+            <!-- 팝업 헤더 바 -->
+            <div class="p-4 sm:p-5 border-b border-stone-800 flex justify-between items-center bg-stone-950/60">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs uppercase tracking-widest text-sky-400 font-semibold px-2 py-0.5 bg-sky-950/80 rounded border border-sky-800">Gallery</span>
+                    <h3 class="text-base sm:text-xl font-medium text-white">국립과천과학관 롯데리아 시공 현장 (총 12장)</h3>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span id="modal-counter" class="text-xs font-medium text-stone-400 bg-stone-800 px-3 py-1 rounded-full">1 / 12</span>
+                    <button onclick="closeGalleryModal()" class="text-stone-400 hover:text-white text-3xl font-light leading-none p-1 focus:outline-none">&times;</button>
+                </div>
+            </div>
+
+            <!-- 메인 사진 뷰어 영역 (좌우 버튼 포함) -->
+            <div class="relative w-full h-64 sm:h-[480px] bg-stone-950 flex items-center justify-center overflow-hidden">
+                <img id="modal-main-img" src="./lotteria_01.jpg" class="w-full h-full object-contain transition-all duration-300" alt="시공 사진 상세">
+                
+                <!-- 이전 사진 버튼 -->
+                <button onclick="prevPhoto(event)" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 bg-stone-900/80 hover:bg-sky-600 text-white p-3 sm:p-4 rounded-full backdrop-blur-sm border border-stone-700 transition focus:outline-none shadow-lg">
+                    &#10094;
+                </button>
+                <!-- 다음 사진 버튼 -->
+                <button onclick="nextPhoto(event)" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 bg-stone-900/80 hover:bg-sky-600 text-white p-3 sm:p-4 rounded-full backdrop-blur-sm border border-stone-700 transition focus:outline-none shadow-lg">
+                    &#10095;
+                </button>
+            </div>
+
+            <!-- 하단 12장 썸네일 그리드 스크롤바 -->
+            <div class="p-4 sm:p-5 bg-stone-900/90 border-t border-stone-800">
+                <div class="text-[11px] text-stone-400 mb-2.5 font-medium flex justify-between">
+                    <span>💡 사진을 클릭하거나 좌우 버튼(또는 키보드 방향키)으로 넘겨볼 수 있습니다.</span>
+                    <span class="text-sky-400">클릭하여 바로보기</span>
+                </div>
+                
+                <!-- 12개 썸네일 리스트 -->
+                <div class="grid grid-cols-6 sm:grid-cols-12 gap-2 sm:gap-2.5 overflow-x-auto pb-1">
+                    <div onclick="selectPhoto(0)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_01.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(1)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_02.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(2)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_03.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(3)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_04.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(4)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_05.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(5)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_06.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(6)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_07.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(7)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_08.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(8)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_09.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(9)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_10.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(10)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_11.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div onclick="selectPhoto(11)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
+                        <img src="./lotteria_12.jpg" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
     <!-- [하단 푸터] -->
     <footer class="bg-stone-950 text-stone-400 text-xs py-12 sm:py-14 border-t border-stone-800">
@@ -240,7 +332,7 @@
     </footer>
 
     <!-- [고객상담 챗봇] -->
-    <div id="chatbot-button-container" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end space-y-2">
+    <div id="chatbot-button-container" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end space-y-2">
         <div id="chatbot-tooltip" class="bg-white text-stone-800 text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-xl border border-stone-100 tracking-tight animate-bounce">
             필름 샘플 & 견적 상담 💬
         </div>
@@ -251,7 +343,7 @@
         </button>
     </div>
 
-    <div id="chatbot-window" class="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 max-w-sm h-[480px] sm:h-[520px] bg-white rounded-2xl shadow-2xl border border-stone-200 z-50 flex flex-col hidden transition-all duration-300">
+    <div id="chatbot-window" class="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 max-w-sm h-[480px] sm:h-[520px] bg-white rounded-2xl shadow-2xl border border-stone-200 z-40 flex flex-col hidden transition-all duration-300">
         <div class="sd-dark text-white px-4 sm:px-5 py-3.5 sm:py-4 rounded-t-2xl flex justify-between items-center border-b border-stone-800">
             <div class="flex items-center space-x-2.5">
                 <div class="w-2.5 h-2.5 bg-sky-400 rounded-full animate-pulse"></div>
@@ -313,7 +405,6 @@
             dots[currentSlide].classList.remove('w-2', 'bg-white/40');
             dots[currentSlide].classList.add('w-6', 'sm:w-8', 'bg-white');
 
-            // 롯데리아 슬라이드(0번)일 때만 배지 표시
             if (lotteriaBadge) {
                 if (currentSlide === 0) {
                     lotteriaBadge.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
@@ -338,6 +429,79 @@
                 tooltip.classList.remove('hidden');
             }
         }
+
+        /* ⭐ 12장 사진 갤러리 컨트롤러 */
+        const photoList = [
+            './lotteria_01.jpg',
+            './lotteria_02.jpg',
+            './lotteria_03.jpg',
+            './lotteria_04.jpg',
+            './lotteria_05.jpg',
+            './lotteria_06.jpg',
+            './lotteria_07.jpg',
+            './lotteria_08.jpg',
+            './lotteria_09.jpg',
+            './lotteria_10.jpg',
+            './lotteria_11.jpg',
+            './lotteria_12.jpg'
+        ];
+
+        let currentPhotoIndex = 0;
+        const mainImg = document.getElementById('modal-main-img');
+        const counter = document.getElementById('modal-counter');
+        const thumbs = document.querySelectorAll('.thumb-card');
+
+        function updateModalView() {
+            mainImg.src = photoList[currentPhotoIndex];
+            counter.innerText = `${currentPhotoIndex + 1} / ${photoList.length}`;
+            
+            thumbs.forEach((thumb, idx) => {
+                if (idx === currentPhotoIndex) {
+                    thumb.classList.add('thumb-active');
+                } else {
+                    thumb.classList.remove('thumb-active');
+                }
+            });
+        }
+
+        function openGalleryModal(index = 0) {
+            currentPhotoIndex = index;
+            updateModalView();
+            document.getElementById('gallery-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+
+        function closeGalleryModal() {
+            document.getElementById('gallery-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectPhoto(index) {
+            currentPhotoIndex = index;
+            updateModalView();
+        }
+
+        function prevPhoto(e) {
+            if (e) e.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex - 1 + photoList.length) % photoList.length;
+            updateModalView();
+        }
+
+        function nextPhoto(e) {
+            if (e) e.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoList.length;
+            updateModalView();
+        }
+
+        // 키보드 좌우 방향키 및 ESC 닫기 지원
+        window.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('gallery-modal');
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') prevPhoto();
+                if (e.key === 'ArrowRight') nextPhoto();
+                if (e.key === 'Escape') closeGalleryModal();
+            }
+        });
     </script>
 
 </body>
