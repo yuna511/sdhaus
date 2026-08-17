@@ -81,13 +81,13 @@
     </header>
 
     <!-- [1. 메인 히어로 섹션] -->
-    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24 overflow-hidden pt-20">
+    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24 overflow-hidden pt-20 pb-24 sm:pb-20">
         
         <div class="hero-slide active" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.6) 45%, rgba(15,23,35,0.3) 100%), url('./hero_lotteria.jpg');"></div>
         <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80');"></div>
         <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');"></div>
 
-        <div class="relative z-10 max-w-2xl text-left py-12">
+        <div class="relative z-10 max-w-2xl text-left py-8 sm:py-12">
             <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-sky-300 mb-3 sm:mb-4 font-semibold block">Premium Interior Film Solutions</span>
             <h1 class="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-white mb-4 sm:mb-6 leading-tight">
                 공간의 무드를 바꾸는<br><span class="font-normal text-sky-100">가장 감각적인 터치</span>
@@ -102,16 +102,18 @@
             </div>
         </div>
 
+        <!-- 슬라이더 인디케이터 -->
         <div class="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 lg:left-24 z-10 flex space-x-2">
             <div class="slide-dot w-6 sm:w-8 h-1 rounded-full bg-white transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
         </div>
 
-        <a id="lotteria-badge" href="#space" class="hidden lg:flex absolute bottom-10 right-24 z-10 items-center space-x-2 bg-stone-900/80 backdrop-blur-md border border-sky-400/40 text-sky-200 text-xs px-4 py-2.5 rounded-lg shadow-xl hover:bg-stone-900 hover:border-sky-300 transition duration-300 opacity-100 scale-100">
+        <!-- ⭐ [모바일 + PC 공용] 롯데리아 슬라이드 시공 현장 바로가기 배지 -->
+        <a id="lotteria-badge" href="#space" class="absolute bottom-16 sm:bottom-10 right-6 sm:right-12 lg:right-24 z-10 flex items-center space-x-1.5 sm:space-x-2 bg-stone-900/85 backdrop-blur-md border border-sky-400/50 text-sky-200 text-[11px] sm:text-xs px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg shadow-xl hover:bg-stone-900 hover:border-sky-300 transition duration-300 opacity-100 scale-100">
             <span>📍</span>
-            <span class="font-medium">시공 현장 : 국립과천과학관 롯데리아 전면 시공</span>
-            <span class="text-stone-400 ml-1">→</span>
+            <span class="font-medium">시공 현장 : 국립과천과학관 롯데리아</span>
+            <span class="text-stone-400 ml-0.5 sm:ml-1">→</span>
         </a>
     </section>
 
@@ -190,7 +192,6 @@
                 <div onclick="openGalleryModal(0)" class="space-y-3 sm:space-y-4 cursor-pointer group">
                     <div class="relative h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden border border-stone-700 group-hover:border-sky-400 transition duration-300">
                         <div class="w-full h-full group-hover:scale-105 transition duration-500" style="background: url('./hero_lotteria.jpg') center/cover;"></div>
-                        <!-- 오버레이 배지 -->
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                             <span class="bg-sky-500 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg flex items-center space-x-1.5">
                                 <span>📸 시공 사진 12장 전체보기</span>
@@ -247,28 +248,25 @@
                 </div>
             </div>
 
-            <!-- 메인 사진 뷰어 영역 (좌우 버튼 포함) -->
+            <!-- 메인 사진 뷰어 영역 -->
             <div class="relative w-full h-64 sm:h-[480px] bg-stone-950 flex items-center justify-center overflow-hidden">
                 <img id="modal-main-img" src="./lotteria_01.jpg" class="w-full h-full object-contain transition-all duration-300" alt="시공 사진 상세">
                 
-                <!-- 이전 사진 버튼 -->
                 <button onclick="prevPhoto(event)" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 bg-stone-900/80 hover:bg-sky-600 text-white p-3 sm:p-4 rounded-full backdrop-blur-sm border border-stone-700 transition focus:outline-none shadow-lg">
                     &#10094;
                 </button>
-                <!-- 다음 사진 버튼 -->
                 <button onclick="nextPhoto(event)" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 bg-stone-900/80 hover:bg-sky-600 text-white p-3 sm:p-4 rounded-full backdrop-blur-sm border border-stone-700 transition focus:outline-none shadow-lg">
                     &#10095;
                 </button>
             </div>
 
-            <!-- 하단 12장 썸네일 그리드 스크롤바 -->
+            <!-- 하단 12장 썸네일 그리드 -->
             <div class="p-4 sm:p-5 bg-stone-900/90 border-t border-stone-800">
                 <div class="text-[11px] text-stone-400 mb-2.5 font-medium flex justify-between">
                     <span>💡 사진을 클릭하거나 좌우 버튼(또는 키보드 방향키)으로 넘겨볼 수 있습니다.</span>
                     <span class="text-sky-400">클릭하여 바로보기</span>
                 </div>
                 
-                <!-- 12개 썸네일 리스트 -->
                 <div class="grid grid-cols-6 sm:grid-cols-12 gap-2 sm:gap-2.5 overflow-x-auto pb-1">
                     <div onclick="selectPhoto(0)" class="thumb-card cursor-pointer h-14 sm:h-16 rounded overflow-hidden border-2 border-stone-700 opacity-60 hover:opacity-100 transition">
                         <img src="./lotteria_01.jpg" class="w-full h-full object-cover">
@@ -430,7 +428,7 @@
             }
         }
 
-        /* ⭐ 12장 사진 갤러리 컨트롤러 */
+        /* 12장 사진 갤러리 컨트롤러 */
         const photoList = [
             './lotteria_01.jpg',
             './lotteria_02.jpg',
@@ -468,7 +466,7 @@
             currentPhotoIndex = index;
             updateModalView();
             document.getElementById('gallery-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+            document.body.style.overflow = 'hidden';
         }
 
         function closeGalleryModal() {
@@ -493,7 +491,6 @@
             updateModalView();
         }
 
-        // 키보드 좌우 방향키 및 ESC 닫기 지원
         window.addEventListener('keydown', (e) => {
             const modal = document.getElementById('gallery-modal');
             if (!modal.classList.contains('hidden')) {
