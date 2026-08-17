@@ -47,7 +47,7 @@
                 <span class="text-[11px] sm:text-xs font-semibold text-stone-400 border-l border-stone-300 pl-2 sm:pl-3 tracking-wide">(주)에스디하우스</span>
             </a>
 
-            <!-- PC 전용 메뉴 -->
+            <!-- PC 메뉴 -->
             <nav class="hidden md:flex space-x-8 lg:space-x-10 text-sm font-medium tracking-wide text-stone-600">
                 <a href="#hero" class="hover:text-stone-900 transition">홈</a>
                 <a href="#philosophy" class="hover:text-stone-900 transition">브랜드 스토리</a>
@@ -57,7 +57,7 @@
             
             <div class="hidden md:block text-xs border border-stone-300 px-3.5 py-1.5 rounded-full font-medium tracking-wider text-stone-600">KR / EN</div>
 
-            <!-- 📱 모바일 햄버거 메뉴 버튼 -->
+            <!-- 모바일 햄버거 버튼 -->
             <button onclick="toggleMobileMenu()" class="md:hidden text-stone-700 hover:text-stone-900 focus:outline-none p-1.5" aria-label="메뉴 열기">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -65,7 +65,7 @@
             </button>
         </div>
 
-        <!-- 📱 모바일 전용 드롭다운 메뉴 (기본 숨김) -->
+        <!-- 모바일 드롭다운 -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-stone-200 px-6 py-4 space-y-3">
             <a href="#hero" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">홈</a>
             <a href="#philosophy" onclick="toggleMobileMenu()" class="block text-sm font-medium text-stone-700 py-1">브랜드 스토리</a>
@@ -78,31 +78,46 @@
         </div>
     </header>
 
-    <!-- [1. 메인 히어로 섹션] -->
-    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-16">
-        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');"></div>
+    <!-- [1. 메인 히어로 섹션 (좌측 정렬 모던 레이아웃)] -->
+    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24 overflow-hidden pt-20">
+        
+        <!-- 슬라이드 배경 1 (국립과천과학관 롯데리아 정면컷 + 좌측 어두운 그라데이션) -->
+        <div class="hero-slide active" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.6) 45%, rgba(15,23,35,0.3) 100%), url('./hero_lotteria.jpg');"></div>
+        <!-- 슬라이드 배경 2 -->
+        <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- 슬라이드 배경 3 -->
+        <div class="hero-slide" style="background-image: linear-gradient(to right, rgba(15,23,35,0.85) 0%, rgba(15,23,35,0.5) 100%), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');"></div>
 
-        <div class="relative z-10 max-w-3xl flex flex-col items-center py-12">
-            <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-sky-200 mb-3 sm:mb-4 font-semibold">Premium Interior Film Solutions</span>
+        <!-- 좌측 정렬 메인 슬로건 콘텐츠 -->
+        <div class="relative z-10 max-w-2xl text-left py-12">
+            <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-sky-300 mb-3 sm:mb-4 font-semibold block">Premium Interior Film Solutions</span>
             <h1 class="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-white mb-4 sm:mb-6 leading-tight">
                 공간의 무드를 바꾸는<br><span class="font-normal text-sky-100">가장 감각적인 터치</span>
             </h1>
-            <p class="text-xs sm:text-sm md:text-base text-stone-200 font-light max-w-xl leading-relaxed mb-6 sm:mb-8 px-2">
-                인테리어 필름 전문 기업 <strong>(주)에스디하우스</strong>는 독보적인 텍스처와 뛰어난 시공성으로 주거부터 상업 공간까지 완성도 높은 표면 마감 솔루션을 제안합니다.
+            <p class="text-xs sm:text-sm md:text-base text-stone-200 font-light leading-relaxed mb-6 sm:mb-8">
+                인테리어 필름 전문 기업 <strong>(주)에스디하우스</strong>는 독보적인 텍스처와 뛰어난 시공성으로<br class="hidden sm:inline">
+                국립과천과학관 등 대형 상업·공공 공간부터 하이엔드 주거까지 완벽한 마감 솔루션을 제안합니다.
             </p>
-            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto px-6 sm:px-0">
-                <a href="#films" class="bg-white text-stone-900 text-xs tracking-widest uppercase px-6 sm:px-8 py-3.5 sm:py-4 hover:bg-stone-900 hover:text-white transition duration-300 font-medium shadow-lg text-center">필름 컬렉션 보기</a>
-                <a href="#space" class="border border-white/70 text-white text-xs tracking-widest uppercase px-6 sm:px-8 py-3.5 sm:py-4 hover:bg-white/10 transition duration-300 font-medium text-center">시공 갤러리</a>
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+                <a href="#films" class="bg-white text-stone-900 text-xs tracking-widest uppercase px-7 py-3.5 sm:py-4 hover:bg-stone-900 hover:text-white transition duration-300 font-medium shadow-lg text-center">필름 컬렉션 보기</a>
+                <!-- ⭐ 시공 갤러리로 직접 이동하는 버튼 -->
+                <a href="#space" class="border border-white/70 text-white text-xs tracking-widest uppercase px-7 py-3.5 sm:py-4 hover:bg-white/10 transition duration-300 font-medium text-center">시공 갤러리 바로가기</a>
             </div>
         </div>
 
-        <div class="absolute bottom-6 sm:bottom-10 z-10 flex space-x-2">
+        <!-- 슬라이더 인디케이터 (좌측 하단) -->
+        <div class="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 lg:left-24 z-10 flex space-x-2">
             <div class="slide-dot w-6 sm:w-8 h-1 rounded-full bg-white transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
             <div class="slide-dot w-2 h-1 rounded-full bg-white/40 transition-all duration-500"></div>
         </div>
+
+        <!-- ⭐ 우측 하단 시공 현장 바로가기 배지 -->
+        <a href="#space" class="hidden lg:flex absolute bottom-10 right-24 z-10 items-center space-x-2 bg-stone-900/80 backdrop-blur-md border border-sky-400/40 text-sky-200 text-xs px-4 py-2.5 rounded-lg shadow-xl hover:bg-stone-900 hover:border-sky-300 transition duration-300">
+            <span>📍</span>
+            <span class="font-medium">시공 현장 : 국립과천과학관 롯데리아 전면 시공</span>
+            <span class="text-stone-400 ml-1">→</span>
+        </a>
     </section>
 
     <!-- [2. 브랜드 이념 섹션] -->
@@ -134,7 +149,6 @@
             <h2 class="text-2xl sm:text-3xl font-light text-stone-900">에스디하우스 시그니처 필름</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            <!-- 1. 리얼 우드 필름 -->
             <div class="bg-white p-4 sm:p-5 border border-stone-200 hover:shadow-xl transition duration-300 group rounded-lg sm:rounded-none">
                 <div class="h-56 sm:h-64 bg-stone-100 mb-4 overflow-hidden rounded sm:rounded-none">
                     <div class="w-full h-full group-hover:scale-105 transition duration-500" style="background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80') center/cover;"></div>
@@ -143,7 +157,6 @@
                 <h3 class="font-medium text-base sm:text-lg text-stone-900 mt-1 mb-1">내추럴 우드 필름</h3>
                 <p class="text-xs text-stone-500 font-light leading-relaxed">자연 원목 특유의 결합과 온기를 담은 프리미엄 우드 결 패턴 컬렉션</p>
             </div>
-            <!-- 2. 스톤 & 마블 필름 -->
             <div class="bg-white p-4 sm:p-5 border border-stone-200 hover:shadow-xl transition duration-300 group rounded-lg sm:rounded-none">
                 <div class="h-56 sm:h-64 bg-stone-100 mb-4 overflow-hidden rounded sm:rounded-none">
                     <div class="w-full h-full group-hover:scale-105 transition duration-500" style="background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80') center/cover;"></div>
@@ -152,7 +165,6 @@
                 <h3 class="font-medium text-base sm:text-lg text-stone-900 mt-1 mb-1">스톤 & 대리석 필름</h3>
                 <p class="text-xs text-stone-500 font-light leading-relaxed">고급 대리석과 콘크리트 질감을 모던하게 연출하는 하이엔드 라인업</p>
             </div>
-            <!-- 3. 솔리드 매트 필름 -->
             <div class="bg-white p-4 sm:p-5 border border-stone-200 hover:shadow-xl transition duration-300 group rounded-lg sm:rounded-none">
                 <div class="h-56 sm:h-64 bg-stone-100 mb-4 overflow-hidden rounded sm:rounded-none">
                     <div class="w-full h-full group-hover:scale-105 transition duration-500" style="background: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80') center/cover;"></div>
@@ -161,7 +173,6 @@
                 <h3 class="font-medium text-base sm:text-lg text-stone-900 mt-1 mb-1">솔리드 매트 필름</h3>
                 <p class="text-xs text-stone-500 font-light leading-relaxed">지문 방지와 소프트한 무광 텍스처로 모던 인테리어에 최적화된 단색 필름</p>
             </div>
-            <!-- 4. 메탈 & 패브릭 필름 -->
             <div class="bg-white p-4 sm:p-5 border border-stone-200 hover:shadow-xl transition duration-300 group rounded-lg sm:rounded-none">
                 <div class="h-56 sm:h-64 bg-stone-100 mb-4 overflow-hidden rounded sm:rounded-none">
                     <div class="w-full h-full group-hover:scale-105 transition duration-500" style="background: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80') center/cover;"></div>
@@ -173,27 +184,43 @@
         </div>
     </section>
 
-    <!-- [4. 시공 갤러리 섹션] -->
+    <!-- [4. 시공 갤러리 섹션 (#space)] -->
     <section id="space" class="sd-dark text-stone-300 py-20 sm:py-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <span class="text-xs uppercase tracking-widest sd-blue font-semibold block mb-3 sm:mb-4">Space Archive</span>
             <h2 class="text-2xl sm:text-3xl font-light text-white mb-10 sm:mb-16">에스디하우스 필름 시공 공간</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- ⭐ 1. 국립과천과학관 롯데리아 대표 시공 -->
+                <div class="space-y-3 sm:space-y-4">
+                    <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('./hero_lotteria.jpg') center/cover;"></div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-[10px] bg-sky-900/80 text-sky-300 px-2.5 py-0.5 rounded font-medium border border-sky-500/30">Public / F&B</span>
+                        <h4 class="text-white font-medium text-base sm:text-lg">국립과천과학관 롯데리아</h4>
+                    </div>
+                    <p class="text-xs text-stone-400">키즈존 특화 컬러 필름, 대형 곡면 벽체 및 기둥 프레임 전면 마감 시공</p>
+                </div>
+
+                <!-- 2. 주거 복합 리폼 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-                    <h4 class="text-white font-medium text-base sm:text-lg">프리미엄 주거 복합 리폼</h4>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-[10px] bg-stone-800 text-stone-300 px-2.5 py-0.5 rounded font-medium">Residential</span>
+                        <h4 class="text-white font-medium text-base sm:text-lg">프리미엄 주거 복합 리폼</h4>
+                    </div>
                     <p class="text-xs text-stone-400">문틀, 샷시, 싱크대 무광 솔리드 매트 화이트 시공</p>
                 </div>
+
+                <!-- 3. 상업 오피스 -->
                 <div class="space-y-3 sm:space-y-4">
                     <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-                    <h4 class="text-white font-medium text-base sm:text-lg">상업용 복합 오피스 라운지</h4>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-[10px] bg-stone-800 text-stone-300 px-2.5 py-0.5 rounded font-medium">Commercial</span>
+                        <h4 class="text-white font-medium text-base sm:text-lg">상업용 복합 오피스 라운지</h4>
+                    </div>
                     <p class="text-xs text-stone-400">월 패널 및 안내 데스크 다크 월넛 우드 필름 적용</p>
                 </div>
-                <div class="space-y-3 sm:space-y-4">
-                    <div class="h-64 sm:h-80 bg-stone-800 rounded-lg sm:rounded-none overflow-hidden" style="background: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-                    <h4 class="text-white font-medium text-base sm:text-lg">플래그십 부티크 숍</h4>
-                    <p class="text-xs text-stone-400">카운터 및 기둥 테라조 스톤 마감 필름 시공</p>
-                </div>
+
             </div>
         </div>
     </section>
@@ -217,11 +244,7 @@
         </div>
     </footer>
 
-    <!-- ========================================================================= -->
-    <!-- 💬 [고객상담 챗봇 (모바일 반응형 완벽 최적화)] -->
-    <!-- ========================================================================= -->
-    
-    <!-- 플로팅 버튼 & 말풍선 -->
+    <!-- [고객상담 챗봇] -->
     <div id="chatbot-button-container" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end space-y-2">
         <div id="chatbot-tooltip" class="bg-white text-stone-800 text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-xl border border-stone-100 tracking-tight animate-bounce">
             필름 샘플 & 견적 상담 💬
@@ -233,7 +256,6 @@
         </button>
     </div>
 
-    <!-- 챗봇 창 (모바일 폭에 맞춤 계산: w-[calc(100vw-2rem)] md:w-96) -->
     <div id="chatbot-window" class="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 max-w-sm h-[480px] sm:h-[520px] bg-white rounded-2xl shadow-2xl border border-stone-200 z-50 flex flex-col hidden transition-all duration-300">
         <div class="sd-dark text-white px-4 sm:px-5 py-3.5 sm:py-4 rounded-t-2xl flex justify-between items-center border-b border-stone-800">
             <div class="flex items-center space-x-2.5">
@@ -276,13 +298,10 @@
 
     <!-- [스크립트] -->
     <script>
-        // 1. 모바일 햄버거 메뉴 토글
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        // 2. 메인 배경 슬라이더
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slide-dot');
         let currentSlide = 0;
@@ -300,7 +319,6 @@
         }
         setInterval(nextSlide, 5000);
 
-        // 3. 챗봇 열기/닫기
         function toggleChatbot() {
             const chatWindow = document.getElementById('chatbot-window');
             const tooltip = document.getElementById('chatbot-tooltip');
